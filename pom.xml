@@ -10,10 +10,10 @@
     <name>parent-modules</name>
 	<packaging>pom</packaging>
 
-    <modules>
+<!--    <modules>
         <module>lombok-custom</module>
         <module>quarkus</module>
-    </modules>
+    </modules> -->
 
 	<dependencies>
 		<!-- logging -->
