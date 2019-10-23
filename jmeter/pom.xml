@@ -49,7 +49,7 @@
                         <phase>pre-integration-test</phase>
                         <configuration>
                             <target>
-							<property name="executable-full-path" location="../../../DB/MongoDB/Server/4.0/bin/mongod.exe" />
+							<property name="executable-full-path" location="C:/DB/MongoDB/Server/4.0/bin/mongod.exe" />
                                 <exec executable="${executable-full-path}"  spawn="true" os="Windows 10"/>
                             </target>
                         </configuration>
@@ -62,7 +62,7 @@
                         <phase>post-integration-test</phase>
                         <configuration>
                             <target>
-							<property name="stop-executable-full-path" location="../../../DB/MongoDB/Server/4.0/bin/mongo.exe" />
+							<property name="stop-executable-full-path" location="C:/DB/MongoDB/Server/4.0/bin/mongo.exe" />
                                 <exec executable="${stop-executable-full-path}"  spawn="true" os="Windows 10">
 									<arg value="admin"/>
 									<arg value="--eval"/>
