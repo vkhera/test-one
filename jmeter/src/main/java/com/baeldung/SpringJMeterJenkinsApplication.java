@@ -2,11 +2,16 @@ package com.baeldung;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
+import com.baeldung.repository.StudentDataRestRepository;
+
+import org.springframework.beans.factory.annotation.Autowired;
 
 @SpringBootApplication
-@EnableMongoRepositories
 public class SpringJMeterJenkinsApplication {
+	
+	@Autowired
+	StudentDataRestRepository repository;
+	
 	public static void main(String[] args) {
 		SpringApplication.run(SpringJMeterJenkinsApplication.class, args);
 	}

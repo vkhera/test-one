@@ -1,66 +1,61 @@
 package com.baeldung.domain;
 
-import javax.validation.constraints.NotNull;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
-import java.io.Serializable;
+@Entity
+public class Student {
+	@Id
+	@GeneratedValue
+	private Long id;
+	private String name;
+	private String passportNumber;
 
-@Document(collection = "STUDENT")
-public class Student implements Serializable {
+	public Student() {
+		super();
+	}
 
-    @Id
-    private String id;
-    @NotNull
-    private String firstName;
-    private String lastName;
-    @NotNull
-    private String phoneNumber;
-    private String email;
+	public Student(Long id, String name, String passportNumber) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.passportNumber = passportNumber;
+	}
 
-    public String getId() {
-        return id;
-    }
+	public Student(String name, String passportNumber) {
+		super();
+		this.name = name;
+		this.passportNumber = passportNumber;
+	}
 
-    public String getFirstName() {
-        return firstName;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public String getLastName() {
-        return lastName;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
+	public String getPassportNumber() {
+		return passportNumber;
+	}
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
+	public void setPassportNumber(String passportNumber) {
+		this.passportNumber = passportNumber;
+	}
 
-    public String getEmail() {
-        return email;
-    }
+	@Override
+	public String toString() {
+		return String.format("Student [id=%s, name=%s, passportNumber=%s]", id, name, passportNumber);
+	}
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    @Override
-    public String toString() {
-        return "Student{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", email='" + email + '\'' +
-                '}';
-    }
 }

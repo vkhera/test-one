@@ -11,7 +11,6 @@ public class SpringJMeterJenkinsApplicationIntegrationTest {
 
 	@Test
 	public void contextLoads() {
-		System.out.println("Running integration test --********************************************************************");
 	}
 
 }

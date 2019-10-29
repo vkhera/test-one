@@ -10,7 +10,7 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import com.baeldung.domain.Student;
-import com.baeldung.repository.StudentRepository;
+import com.baeldung.repository.StudentDataRestRepository;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.context.TestPropertySource;
 
@@ -25,19 +25,19 @@ public class SpringJMeterControllerApplicationIntegrationTest {
     private MockMvc mvc;
 
     @Autowired
-    private StudentRepository repository;
+    private StudentDataRestRepository repository;
 	@Test
 	public void contextLoads() {
 	}
-	    @Test
+	@Test
     public void createStudents() throws Exception {
-        createTestStudents("bob","lname","1234567890","abcd@efgh.com");
-        createTestStudents("alex","lname","1234567890","abcd@efgh.com");
+        createTestStudents(11223344L,"lname","1234567890");
+        createTestStudents(33755656L,"lname","1234567890");
     }
 
-	private void createTestStudents(String fname,String lname, String phone,String email) {
-        Student stdnt = new Student();
-        repository.insert(stdnt);
+	private void createTestStudents(long fname,String lname, String pnumber) {
+        Student stdnt = new Student(fname,lname,pnumber);
+//        repository.insert(stdnt);
 		System.out.println("Inserted student......********************************************************************");
     }
 

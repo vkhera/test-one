@@ -17,10 +17,14 @@
     </parent>
 
     <dependencies>
-        <dependency>
+  <!--      <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-mongodb</artifactId>
-        </dependency>
+        </dependency> -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-rest</artifactId>
@@ -31,51 +35,32 @@
             <scope>test</scope>
         </dependency>
 		<dependency>
-    <groupId>org.springframework</groupId>
-    <artifactId>spring-jdbc</artifactId>
-	<scope>test</scope>
-</dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jdbc</artifactId>
+		</dependency>
+				<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-jdbc</artifactId>
+			<version>1.1.0.RELEASE</version>
+		</dependency>
+				<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<!--		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency> -->
     </dependencies>
 
     <build>
         <plugins>
-			<plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-antrun-plugin</artifactId>
-                <version>1.8</version>
-                <executions>
-                    <execution>
-                        <id>runDB</id>
-                        <phase>pre-integration-test</phase>
-                        <configuration>
-                            <target>
-							<property name="executable-full-path" location="C:/DB/MongoDB/Server/4.0/bin/mongod.exe" />
-                                <exec executable="${executable-full-path}"  spawn="true" os="Windows 10"/>
-                            </target>
-                        </configuration>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>stopDB</id>
-                        <phase>post-integration-test</phase>
-                        <configuration>
-                            <target>
-							<property name="stop-executable-full-path" location="C:/DB/MongoDB/Server/4.0/bin/mongo.exe" />
-                                <exec executable="${stop-executable-full-path}"  spawn="true" os="Windows 10">
-									<arg value="admin"/>
-									<arg value="--eval"/>
-									<arg value="db.shutdownServer()"/>
-								</exec>
-                            </target>
-                        </configuration>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
@@ -93,26 +78,6 @@
 					  </goals>
 					</execution>
 				  </executions>
-            </plugin>
-			<plugin>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.22.0</version>
-                <executions>
-                    <execution>
-                        <phase>integration-test</phase>
-                        <goals>
-                            <goal>test</goal>
-                        </goals>
-                        <configuration>
-                            <excludes>
-                                <exclude>none</exclude>
-                            </excludes>
-                            <includes>
-                                <include>**/*IntegrationTest</include>
-                            </includes>
-                        </configuration>
-                    </execution>
-                </executions>
             </plugin>
             <plugin>
                 <groupId>com.lazerycode.jmeter</groupId>
@@ -133,9 +98,7 @@
             </plugin>
         </plugins>
     </build>
-
     <properties>
         <jmeter.version>2.6.0</jmeter.version>
     </properties>
-
 </project>
