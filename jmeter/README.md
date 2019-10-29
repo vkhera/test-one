@@ -1,13 +1,12 @@
 BASIC CRUD API with Spring Boot
 ================================
 
-This is the code of a simple API for some CRUD operations build using Spring Boot.
+This is the code of a simple API for some CRUD operations build using Spring Boot using H2 DB
 
 ### Requirements
 
 - Maven
 - JDK 8
-- MongoDB
 
 ### Running
 
